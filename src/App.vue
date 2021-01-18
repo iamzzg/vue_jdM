@@ -1,16 +1,21 @@
-<!--
- * @Author: your name
- * @Date: 2021-01-15 20:39:54
- * @LastEditTime: 2021-01-15 21:24:09
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \vue_jdm\src\App.vue
--->
 <template>
   <div id="app">
-    <div class="app"></div>
+    <router-view></router-view>
+    <FooterNav></FooterNav>
   </div>
 </template>
+
+
+<script>
+import FooterNav from '@/components/FooterNav.vue'
+
+export default {
+  name:"App",
+  components:{
+    FooterNav
+  }
+}
+</script>
 
 <style lang="less" scoped>
 .app
@@ -18,5 +23,6 @@
   width: 100px;
   height: 100px;
   background-color: aqua;
+  font-size: 0.16rem;
 }
 </style>
