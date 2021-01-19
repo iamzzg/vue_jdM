@@ -19,5 +19,7 @@ body::-webkit-scrollbar{
     height: 0;
 }
 #app{
-    padding-bottom: 0.7rem;
+    padding-bottom: 8vh;
+    box-sizing: border-box;
+    /* background-color: #ffffff; */
 }

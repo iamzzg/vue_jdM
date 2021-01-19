@@ -1,14 +1,10 @@
-<!--
- * @Author: your name
- * @Date: 2021-01-15 22:08:56
- * @LastEditTime: 2021-01-17 18:59:33
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \vue_jdm\src\components\footer-nav.vue
--->
 <template>
   <div class="footer-nav">
-      <a href="javascript:;">
+      <a href="javascript:;" v-for="(nav,index) in navOptions" :key="index" @click="onClickToRouter(nav)">
+        <img :src="nav.activeSrc?nav.activeSrc:nav.src" v-if="nav.path===$route.path">
+        <img :src="nav.src" alt="" v-else>
+      </a>
+      <!-- <a href="javascript:;">
         <img src="../assets/img/index.png" alt="">
       </a>
       <a href="javascript:;">
@@ -22,13 +18,35 @@
       </a>
       <a href="javascript:;">
         <img src="../assets/img/no_login.png" alt="">
-      </a>
+      </a> -->
   </div>
 </template>
 
 <script>
 export default {
-    name:"FooterNav"
+    name:"FooterNav",
+    props: {
+      navOptions:{
+        type:Array,
+        default:null
+      },
+      router:{
+        type:Boolean,
+        default:false
+      }
+    },
+    data () {
+      return {
+      }
+    },
+    methods: {
+      //点击导航跳转
+      onClickToRouter(nav){
+        if(!this.router) return alert("路由模式没开启")
+        if(this.$route.path===nav.path)return;
+        this.$router.push(nav.path)
+      }
+    }
 }
 </script>
 
@@ -39,8 +57,8 @@ export default {
   position: fixed;
   bottom: 0;
   left: 0;
-  // height: 0.6rem;
   width: 100%;
+  height: 8vh;
   box-sizing: border-box;
   box-shadow: 0 -1px 2px  #eeeeee ;
   background-color: #ffffff;
@@ -50,6 +68,7 @@ export default {
     color: #999999;
     width: 20vw;
     img {
+      height: 100%;
       width: 100%;
     }
   }

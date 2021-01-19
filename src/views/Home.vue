@@ -104,7 +104,8 @@ export default {
       //控制搜索框顶部固定
       isFixed: false,
       //控制显示返回顶部按钮
-      showToTopBox:false
+      showToTopBox:false,
+      
     };
   },
   components: {
@@ -195,6 +196,8 @@ export default {
 <style lang="less" scoped>
 .home {
   position: relative;
+  padding-bottom: 8vh;
+  box-sizing: border-box;
   //顶部广告
   .top-guanggao {
     height: 0.45rem;
