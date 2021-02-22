@@ -12,7 +12,7 @@ import './assets/css/normalize.css'
 import './assets/css/common.css'
 import store from './store'
 
-import './lib/vant'
+import './plugins/vant'
 
 
 
