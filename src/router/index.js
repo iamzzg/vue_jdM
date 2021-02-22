@@ -1,14 +1,22 @@
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Category from '../views/Category/Category'
-import JingXi from '../views/JingXi'
-import Cart from '../views/Cart'
-import Login from '../views/Login'
-import User from '../views/User'
-import CateDetail from '../views/Category/CateDetail'
-import Order from '@/views/Order'
+// import Home from '../views/Home.vue'
+const Home = () => import(/* webpackChunkName: "group-home" */ '../views/Home.vue')
+// import Category from '../views/Category/Category'
+const Category = () => import(/* webpackChunkName: "group-category" */ '../views/Category/Category.vue')
+// import JingXi from '../views/JingXi'
+const JingXi = () => import(/* webpackChunkName: "group-JingXi" */ '../views/JingXi.vue')
+// import Cart from '../views/Cart'
+const Cart = () => import(/* webpackChunkName: "group-Cart" */ '../views/Cart.vue')
+// import Login from '../views/Login'
+const Login = () => import(/* webpackChunkName: "group-Login" */ '../views/Login.vue')
+// import User from '../views/User'
+const User = () => import(/* webpackChunkName: "group-User" */ '../views/User.vue')
+// import CateDetail from '../views/Category/CateDetail'
+const CateDetail = () => import(/* webpackChunkName: "group-category" */ '../views/Category/CateDetail.vue')
+// import Order from '@/views/Order'
+const Order = () => import(/* webpackChunkName: "group-Order" */ '../views/Order.vue')
 
 Vue.use(VueRouter)
 

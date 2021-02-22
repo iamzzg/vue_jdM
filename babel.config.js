@@ -9,6 +9,7 @@ module.exports = {
   ],
   plugins:[
     //发布产品时的插件
-    ...prodPlugins
+    ...prodPlugins,
+    "@babel/plugin-syntax-dynamic-import"
   ]
 }
