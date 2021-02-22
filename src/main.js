@@ -10,7 +10,9 @@ Vue.config.productionTip = false
 //引入css
 import './assets/css/normalize.css'
 import './assets/css/common.css'
+import store from './store'
 
+import './lib/vant'
 
 
 
@@ -18,9 +20,12 @@ import './assets/css/common.css'
 //配置axios
 Axios.defaults.baseURL = "http://localhost:3000/api"//全局配置
 
+
+
 Vue.prototype.http = Axios;
 
-new Vue({
+window.vm =new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

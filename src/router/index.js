@@ -2,10 +2,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Category from '../views/Category'
+import Category from '../views/Category/Category'
 import JingXi from '../views/JingXi'
 import Cart from '../views/Cart'
 import Login from '../views/Login'
+import User from '../views/User'
+import CateDetail from '../views/Category/CateDetail'
+import Order from '@/views/Order'
 
 Vue.use(VueRouter)
 
@@ -22,6 +25,11 @@ const routes = [
     component:Category
   },
   {
+    path:"/catedetail/:id",
+    meta:{title:"分类详情"},
+    component:CateDetail
+  },
+  {
     path:'/jingxi',
     meta:{title:"惊喜"},
     component:JingXi
@@ -35,6 +43,24 @@ const routes = [
     path:'/login',
     meta:{title:"登录页"},
     component:Login
+  },
+  {
+    path:'/order',
+    meta:{title:"提交订单"},
+    component:Order
+  },
+  {
+    path:'/user',
+    meta:{title:"用户信息"},
+    component:User,
+    beforeEnter:(to, from, next) => {//进入这个路由前验证token
+      // console.log('user')
+      if(!window.sessionStorage.getItem("token")){
+        next('/login')
+      }else{//有token，放行
+        next()
+      }
+    }
   },
   {
     path:"*",
@@ -59,6 +85,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   window.document.title = to.meta.title
+
   next()
 })
 

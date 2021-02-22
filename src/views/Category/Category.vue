@@ -34,7 +34,7 @@
             </div>
             <!-- 内容区域 -->
             <div class="content-main">
-              <div class="box" v-for="(item,index) in cateData.data" :key="index">
+              <div class="box" v-for="(item,index) in cateData.data" :key="index" @click="showCateDetail(item.cate_detail_id)">
                 <img :src="item.src" alt="">
                 <span>{{item.name}}</span>
               </div>
@@ -90,6 +90,16 @@ export default {
       }else{
         return alert('请求分类数据失败')
       }
+    },
+    //展示分类详情
+    showCateDetail(cate_detail_id){
+      console.log(cate_detail_id)
+      //设置二级分类商品id和隐藏底部导航
+      this.$store.commit('set_cate_detail_id',cate_detail_id)
+      this.$store.commit('setShowFooterNav',false)
+      
+      this.$router.push('/catedetail/'+cate_detail_id)
+
     }
   },
   async created () {
@@ -102,6 +112,7 @@ export default {
 <style lang="less">
 .catagory {
   //顶部导航
+  height: 100%;
   .top {
     width: 100%;
     height: 0.44rem;
@@ -130,7 +141,7 @@ export default {
         margin-left: 0.3rem;
         width: 0.18rem;
         height: 0.16rem;
-        background: url("../assets/img/jd-sprites.png") no-repeat;
+        background: url("../../assets/img/jd-sprites.png") no-repeat;
         background-position: -81px 0;
         background-size: 200px 200px;
         margin-right: 0.2rem;
@@ -155,10 +166,11 @@ export default {
     width: 100%;
     background-color: #fff;
     display: flex;
+    height:calc(100% - 0.44rem);
     //左边内容区域
     .left {
       width: 25%;
-      height: 85vh;
+      height: 100%;
       background-color: rgb(247, 247, 247);
       .left-scroll-container {
         height: 100%;
@@ -180,7 +192,7 @@ export default {
     .right {
       width: 100%;
       .right-scroll-container {
-        height: 85vh;
+        height: 100%;
         
         .content {
           // 内容顶部区域
@@ -202,7 +214,7 @@ export default {
                 display: inline-block;
                 width: 0.12rem;
                 height: 0.12rem;
-                background: url("../assets/img/rank.png") no-repeat;
+                background: url("../../assets/img/rank.png") no-repeat;
                 background-position: 0 0;
                 background-size: 0.12rem 0.12rem;
                 margin-right: 0.1rem;
@@ -228,6 +240,7 @@ export default {
               flex-direction: column;
               justify-content: space-around;
               align-items: center;
+              margin-bottom: 0.15rem;
               img{
                 width: 80%;
                 height: 80%;

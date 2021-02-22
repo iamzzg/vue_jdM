@@ -3,7 +3,7 @@
     
       <router-view></router-view>
     
-      <FooterNav :navOptions="footerNav" :router="true"></FooterNav>
+      <FooterNav :navOptions="footerNav" :router="true" v-if="$store.state.showFooterNav"></FooterNav>
     
   </div>
 </template>
@@ -28,6 +28,12 @@ export default {
         {path:'/login',src:require("@/assets/img/no_login.png"),activeSrc:""},
       ]
     }
+  },
+  methods: {
+    
+  },
+  mounted () {
+    
   }
 }
 </script>

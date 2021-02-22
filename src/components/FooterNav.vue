@@ -43,7 +43,11 @@ export default {
       //点击导航跳转
       onClickToRouter(nav){
         if(!this.router) return alert("路由模式没开启")
-        if(this.$route.path===nav.path)return;
+        if(this.$route.path===nav.path)return;//跳转路由与当前路由一样，不跳转
+        if(window.sessionStorage.getItem('token')&&nav.path==='/login'){//登录后，不再跳转/login
+          if(this.$route.path==='/user') return;//当前路由是/user，不跳转，如果不是则跳转
+           return this.$router.push('/user')
+        }
         this.$router.push(nav.path)
       }
     }
@@ -60,7 +64,7 @@ export default {
   width: 100%;
   height: 8vh;
   box-sizing: border-box;
-  box-shadow: 0 -1px 2px  #eeeeee ;
+  box-shadow: 0 -1px 8px 3px  rgba(0, 0, 0, .1) ;
   background-color: #ffffff;
   z-index: 9999;
   a{

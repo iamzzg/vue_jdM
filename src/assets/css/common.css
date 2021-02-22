@@ -21,5 +21,6 @@ body::-webkit-scrollbar{
 #app{
     padding-bottom: 8vh;
     box-sizing: border-box;
+    height: 100%;
     /* background-color: #ffffff; */
 }

@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="jingxi"> 
       jingxi
+      <div class="inner">inner</div>
   </div>
 </template>
 
@@ -10,6 +11,11 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="less" scoped>
+.jingxi{
+  height: 100%;
+  .inner{
+    height: 100%;
+  }
+}
 </style>
